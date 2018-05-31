@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import socketClient from "socket.io-client";
 
-import MessageList from "./messages-list";
-import StructuralSidebar from "./structural-sidebar";
-import FormMessage from "./form-message";
+import MessageList from "./partials/messages-list";
+import Sidebar from "./structural/sidebar";
+import MessageSend from "./forms/message-send";
 
 class Wrapper extends Component {
   constructor(props) {
@@ -33,7 +33,7 @@ class Wrapper extends Component {
       <div className="container">
         <div className={"content-sidebar"}>
 
-          <StructuralSidebar />
+          <Sidebar />
 
         </div>
         <div className={"content-main"}>
@@ -46,7 +46,7 @@ class Wrapper extends Component {
           </div>
           <div className={"message-input"}>
 
-            <FormMessage />
+            <MessageSend />
 
           </div>
         </div>

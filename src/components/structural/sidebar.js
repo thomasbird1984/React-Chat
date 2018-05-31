@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class StructuralSidebar extends Component {
+class Sidebar extends Component {
   constructor(props) {
     super(props);
 
@@ -35,4 +35,4 @@ class StructuralSidebar extends Component {
   }
 }
 
-export default StructuralSidebar;
+export default Sidebar;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import socketClient from "socket.io-client";
 
-class FormMessage extends Component {
+class MessageSend extends Component {
     constructor(props) {
         super(props);
 
@@ -48,4 +48,4 @@ class FormMessage extends Component {
     }
 }
 
-export default FormMessage;
+export default MessageSend;
