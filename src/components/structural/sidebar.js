@@ -4,7 +4,18 @@ class Sidebar extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+        users: []
+    };
+  }
+
+  componentDidMount() {
+    fetch(`http://localhost:4500/api/users`)
+        .then(response => response.json())
+        .then(users => {
+            this.setState({ users });
+            console.log(users);
+        });
   }
 
   render() {
@@ -19,10 +30,9 @@ class Sidebar extends Component {
         </div>
         <div className="sidebar-widget">
           <ul>
-            <li><a href="">Link 1</a></li>
-            <li><a href="">Link 2</a></li>
-            <li><a href="">Link 3</a></li>
-            <li><a href="">Link 4</a></li>
+            {this.state.users.map((user) =>
+              <li key={user._id}><a href={`/api/users/${user._id}`}>{user.name}</a></li>
+            )}
           </ul>
         </div>
         <div className="sidebar-widget bottom">

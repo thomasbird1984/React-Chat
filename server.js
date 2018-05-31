@@ -4,6 +4,7 @@ const socketIO = require("socket.io");
 const bodyParser = require("body-parser");
 
 const ChatRouter = require("./src/routes/ChatRouter");
+const UserRouter = require("./src/routes/UserRouter");
 
 const port = 4500;
 
@@ -37,10 +38,17 @@ io.on("connection", socket => {
 /**
  * Express
  */
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+})
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/api/messages", ChatRouter);
+app.use("/api/users", UserRouter);
 
 server.listen(port, () => {
     console.log(`Listening on port: ${port}`);
