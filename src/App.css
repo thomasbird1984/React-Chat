@@ -1,0 +1,155 @@
+body,
+html,
+#root,
+.container {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: #333;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.content-main,
+.content-sidebar {
+
+}
+
+.content-sidebar {
+  flex: 1 1 0;
+  display: flex;
+  background: #222;
+  flex-direction: column;
+}
+
+.sidebar-widget {
+  margin-bottom: 20px;
+}
+
+.sidebar-widget ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-widget li {
+  list-style: none;
+}
+
+.sidebar-widget a {
+  color: #ccc;
+  padding: 10px;
+  display: flex;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.sidebar-widget a:hover {
+  color: #fff;
+  background: #1d1d1d;
+}
+
+.sidebar-widget.bottom {
+  align-self: flex-end;
+}
+
+.content-sidebar-profile {
+  color: #fff;
+  text-align: center;
+  background: #1d1d1d;
+  padding-bottom: 20px;
+}
+
+.content-sidebar-profile img {
+  border-radius: 200px;
+  padding: 30px;
+}
+
+.content-sidebar-profile-salutation {
+  font-size: 24px;
+}
+
+.content-sidebar-profile-name {
+  font-size: 18px;
+  display: block;
+}
+
+.content-main {
+  display: flex;
+  flex: 10 0 auto;
+  flex-direction: column;
+}
+
+.messages {
+  flex: 20 0 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.message-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.message-bubble {
+  width: 60%;
+  margin: 30px 30px 0 30px;
+  background: #eee;
+  border-radius: 5px;
+  padding: 15px 25px;
+}
+
+.message-bubble span {
+  margin: 10px 0 0;
+  display: block;
+  font-size: .8rem;
+}
+
+.message-bubble:nth-child(odd) {
+  align-self: flex-end;
+}
+
+.message-bubble:nth-child(even) {
+  align-self: flex-start;
+}
+
+.message-bubble:last-child {
+  margin: 30px;
+}
+
+.message-input {
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.message-input input {
+  flex: 10 0 auto;
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: #666;
+}
+
+.message-input button {
+  flex: 1 0 0;
+  border: none;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 10px 20px;
+  background: #4ea4e0;
+}
+
+.message-input button:hover {
+  background: #3f91ca;
+}
