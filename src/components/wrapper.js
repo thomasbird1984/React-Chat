@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-
 import socketClient from "socket.io-client";
 
 import MessageList from "./messages-list";
 import StructuralSidebar from "./structural-sidebar";
+import FormMessage from "./form-message";
 
 class Wrapper extends Component {
   constructor(props) {
@@ -16,17 +16,6 @@ class Wrapper extends Component {
     };
 
     this.socket = socketClient(this.state.endpoint);
-  }
-
-  send() {
-    if(this.state.msg !== "") {
-      this.socket.emit("message-sent", this.state.msg);
-      this.setState({ msg: "" });
-    }
-  }
-
-  handleChange(e) {
-    this.setState({ msg: e.target.value });
   }
 
   componentDidMount() {
@@ -57,21 +46,7 @@ class Wrapper extends Component {
           </div>
           <div className={"message-input"}>
 
-            <input
-              type={"text"}
-              value={this.state.msg}
-              placeholder={"Enter message..."}
-              onChange={(e) => {
-                this.handleChange(e);
-              }}
-            />
-            <button
-              type={"button"}
-              onClick={() => {
-                this.send();
-              }}>
-                Send
-            </button>
+            <FormMessage />
 
           </div>
         </div>

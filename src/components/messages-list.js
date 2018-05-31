@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import * as moment from "moment";
 
 class MessageList extends Component {
   constructor(props) {
@@ -12,8 +13,8 @@ class MessageList extends Component {
       <div className={"message-list"}>
         {this.props.messages.map((message, i) =>
           <div key={i} className={"message-bubble"}>
-            {message.text}<br/>
-            <span>{message.date}</span>
+            <b>Message: </b>{message.text}<br/>
+            <span><b>Posted</b> {moment(message.date).format("YYYY-MM-DD HH:mm:ss")}</span>
           </div>
         )}
       </div>
