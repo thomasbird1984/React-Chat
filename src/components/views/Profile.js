@@ -13,8 +13,10 @@ class Profile extends Component {
     }
 
     componentDidMount() {
+        // todo: when this request is made it is being sent with the wrong method of `OPTIONS` instead of `GET`
         this.api.get(`/users/${this.props.match.params.id}`).then(user => {
             this.setState({ user });
+            console.log(user, this.state.user);
         });
     }
 

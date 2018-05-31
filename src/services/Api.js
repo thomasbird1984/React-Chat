@@ -1,4 +1,4 @@
-import config from '../config';
+import config from "../config";
 
 export default class Api {
     constructor() {
@@ -6,20 +6,20 @@ export default class Api {
     }
 
     apiConfig = {
-        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: 'same-origin', // include, *omit
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *omit
         headers: {
-            'user-agent': 'Mozilla/4.0 MDN Example',
-            'content-type': 'application/json'
+            "user-agent": "Mozilla/4.0 MDN Example",
+            "content-type": "application/json"
         },
-        mode: 'cors', // no-cors, *same-origin
-        redirect: 'follow', // *manual, error
-        referrer: 'no-referrer', // *client
+        mode: "cors", // no-cors, *same-origin
+        redirect: "follow", // *manual, error
+        referrer: "no-referrer", // *client
     };
 
     post(url, data, token = false) {
         var config = {
-            method: 'POST',
+            method: "POST",
             body: JSON.stringify(data)
         };
 
@@ -38,7 +38,7 @@ export default class Api {
 
     get(url, token = false) {
         let config = {
-            method: 'GET',
+            method: "GET",
         };
 
         if(token) {
@@ -55,7 +55,7 @@ export default class Api {
     }
 
     send(url, config) {
-        console.log('api config', config);
+        console.log("api config", config);
         let qualifiedUrl = this.config.apiUrl + url;
         return fetch(qualifiedUrl, config)
             .then(response => response.json());
