@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Api from "../../services/Api";
 
 class Sidebar extends Component {
   constructor(props) {
@@ -7,14 +8,14 @@ class Sidebar extends Component {
     this.state = {
         users: []
     };
+
+    this.api = new Api();
   }
 
   componentDidMount() {
-    fetch(`http://localhost:4500/api/users`)
-        .then(response => response.json())
+    this.api.get(`/users`)
         .then(users => {
             this.setState({ users });
-            console.log(users);
         });
   }
 
@@ -31,7 +32,7 @@ class Sidebar extends Component {
         <div className="sidebar-widget">
           <ul>
             {this.state.users.map((user) =>
-              <li key={user._id}><a href={`/api/users/${user._id}`}>{user.name}</a></li>
+              <li key={user._id}><a href={`/users/${user._id}`}>{user.name}</a></li>
             )}
           </ul>
         </div>

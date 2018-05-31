@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Home from "./views/Home";
 import About from "./views/About";
+import Profile from "./views/Profile";
 
 import Sidebar from "./structural/sidebar";
 import MessageSend from "./forms/message-send";
@@ -23,6 +24,7 @@ class Wrapper extends Component {
                   <div>
                       <Route exact path="/" component={Home} />
                       <Route path="/about" component={About} />
+                      <Route path={"/users/:id"} component={Profile} />
                   </div>
               </Router>
 

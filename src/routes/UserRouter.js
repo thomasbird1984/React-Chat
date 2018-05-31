@@ -19,7 +19,7 @@ UserRouter.route("/create").post((req, res) => {
 });
 
 UserRouter.route("/:id").get((req, res) => {console.log(`UserRouter /${req.params.id}`);
-    UserModel.findOne({ id: req.params.id }, (err, chat) => {
+    UserModel.findById(req.params.id, (err, chat) => {
         res.json(chat);
     });
 });
