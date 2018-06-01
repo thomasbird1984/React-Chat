@@ -11,6 +11,14 @@ body {
   background: #333;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 200;
+}
+
 .container {
   display: flex;
   flex-direction: row;
@@ -25,6 +33,7 @@ body {
   flex: 1 1 0;
   display: flex;
   background: #222;
+  position: relative;
   flex-direction: column;
 }
 
@@ -39,16 +48,26 @@ body {
   flex-direction: column;
 }
 
+.sidebar-widget a,
+.sidebar-widget li {
+  display: flex;
+  flex: 1 0 auto;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
 .sidebar-widget li {
   list-style: none;
+}
+
+.sidebar-widget li.title {
+  color: #fff;
+  padding: 10px;
 }
 
 .sidebar-widget a {
   color: #ccc;
   padding: 10px;
-  display: flex;
-  font-size: 1rem;
-  text-decoration: none;
 }
 
 .sidebar-widget a:hover {
@@ -57,7 +76,10 @@ body {
 }
 
 .sidebar-widget.bottom {
-  align-self: flex-end;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 0;
+  position: absolute;
 }
 
 .content-sidebar-profile {
@@ -87,8 +109,9 @@ body {
   flex-direction: column;
 }
 
-.messages {
+.content-container {
   flex: 20 0 0;
+  padding: 15px;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -152,4 +175,8 @@ body {
 
 .message-input button:hover {
   background: #3f91ca;
+}
+
+.profile {
+  color: #fff;
 }

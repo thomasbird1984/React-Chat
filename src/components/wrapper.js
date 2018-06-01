@@ -18,10 +18,10 @@ class Wrapper extends Component {
 
         </div>
         <div className={"content-main"}>
-          <div className={"messages"}>
+          <div className={"content-container"}>
 
               <Router>
-                  <div>
+                  <div className={"messages"}>
                       <Route exact path="/" component={Home} />
                       <Route path="/about" component={About} />
                       <Route path={"/users/:id"} component={Profile} />

@@ -14,7 +14,7 @@ class Sidebar extends Component {
 
   componentDidMount() {
     this.api.get(`/users`)
-        .then(users => {
+        .then(users => {console.log("users", users);
             this.setState({ users });
         });
   }
@@ -29,14 +29,21 @@ class Sidebar extends Component {
               <span className="content-sidebar-profile-name">John Doe</span>
             </span>
         </div>
-        <div className="sidebar-widget">
+        <div className={"sidebar-widget"}>
           <ul>
+            <li><a href={"/"}>Home</a></li>
+              <li><a href={"/about"}>About</a></li>
+          </ul>
+        </div>
+        <div className={"sidebar-widget"}>
+          <ul>
+            <li className={"title"}>Users</li>
             {this.state.users.map((user) =>
               <li key={user._id}><a href={`/users/${user._id}`}>{user.name}</a></li>
             )}
           </ul>
         </div>
-        <div className="sidebar-widget bottom">
+        <div className={"sidebar-widget bottom"}>
           <ul>
             <li><a href="">Logout</a></li>
           </ul>
