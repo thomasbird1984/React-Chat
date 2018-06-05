@@ -1,8 +1,13 @@
 import React, { Component } from "react";
+import Api from "../../services/Api";
+import Storage from "../../services/Storage";
 
 class Login extends Component {
   constructor(props) {
     super(props);
+
+    this.api = new Api();
+    this.store = new Storage();
 
     this.state = {
       email: "",
@@ -11,8 +16,36 @@ class Login extends Component {
   }
 
   handleSubmit(e) {
-      console.log("submit", this.state.email, this.state.password);
-      e.preventDefault();
+    console.log("submit", this.state.email, this.state.password);
+
+    this.api.post(`/users/login`, {
+      email: this.state.email,
+      password: this.state.password
+    }).then((data) => {
+      console.log("user", data);
+
+      if(!data.errors) {
+
+        const login = atob(data.token).split("||");
+
+        this.store.set("userInfo", {
+          id: login[0],
+          timestamp: login[1]
+        });
+        this.store.set("token", data.token);
+
+        setTimeout(() => {
+          console.log("fired");
+          window.location = "/dash";
+        }, 250);
+      } else {
+        throw data.errors;
+      }
+    }).catch(e => {
+      console.log("Error: ", e);
+    });
+
+    e.preventDefault();
   }
 
     render() {

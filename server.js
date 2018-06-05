@@ -8,6 +8,10 @@ const bodyParser = require("body-parser");
 const ChatRouter = require("./src/routes/ChatRouter");
 const UserRouter = require("./src/routes/UserRouter");
 
+// import controllers
+const ChatController = require("./src/controllers/ChatController");
+const chat = new ChatController();
+
 // define the port to be used
 const port = 4500;
 
@@ -28,13 +32,15 @@ io.on("connection", socket => {
     console.log("Connected");
 
     // Receive an event
-    socket.on("message-sent", (msg) => {
-      console.log(`New message: ${msg}`);
+    socket.on("message-sent", (data) => {
+      const returnMsg = chat.addMessage(data);
+
       // emit the event
-      io.sockets.emit("message-received", {
-        text: msg,
-        date: new Date()
-      });
+      if(returnMsg) {
+        io.sockets.emit("message-received", returnMsg);
+      } else {
+        io.sockets.emit("message-failed", { errors: true });
+      }
     });
 
     // disconnect from the socket

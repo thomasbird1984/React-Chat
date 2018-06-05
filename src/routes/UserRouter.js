@@ -12,6 +12,23 @@ UserRouter.route('/').get((req, res) => {console.log("UserRouter /");
     });
 });
 
+UserRouter.route("/login").post((req, res) => {console.log("login");
+  const creds = req.body;
+  let user = UserModel.findOne({ email: req.body.email }, (err, user) => {
+    if(user && user.password === req.body.password) {
+      const timestamp = new Date();
+      const token = Buffer.from(`${user.id}||${timestamp}`).toString("base64");
+
+      // send token back
+      UserModel.update({ _id: user._id }, { token: token }, (err, user) => {
+        res.json({ token: token });
+      });
+    } else {
+      res.status(404).send({ errors: true, msg: ["Passwords did not match"]});
+    }
+  });
+});
+
 UserRouter.route("/create").post((req, res) => {
     const message = new UserModel(req.body);
     message.save();
