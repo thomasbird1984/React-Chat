@@ -22,7 +22,7 @@ class Wrapper extends Component {
 
               <Router>
                   <div className={"messages"}>
-                      <Route exact path="/" component={Home} />
+                      <Route path="/dash" component={Home} />
                       <Route path="/about" component={About} />
                       <Route path={"/users/:id"} component={Profile} />
                   </div>
