@@ -9,7 +9,7 @@ const ChatModel = require("../models/ChatModel");
 ChatRouter.route('/').get((req, res) => {console.log("MessageRouter /");
     ChatModel.find({}, (err, chats) => {
         res.json(chats);
-    });
+    }).sort({created: "desc"});
 });
 
 ChatRouter.route("/create").post((req, res) => {
