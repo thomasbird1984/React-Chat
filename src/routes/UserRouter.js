@@ -19,9 +19,14 @@ UserRouter.route("/login").post((req, res) => {console.log("login");
       const timestamp = new Date();
       const token = Buffer.from(`${user.id}||${timestamp}`).toString("base64");
 
+      delete user.password;
+
       // send token back
-      UserModel.update({ _id: user._id }, { token: token }, (err, user) => {
-        res.json({ token: token });
+      UserModel.update({ _id: user._id }, { token: token }, (err, updated) => {
+        res.json({
+          token: token,
+          user: user
+        });
       });
     } else {
       res.status(404).send({ errors: true, msg: ["Passwords did not match"]});

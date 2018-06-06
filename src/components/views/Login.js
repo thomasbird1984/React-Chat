@@ -33,6 +33,7 @@ class Login extends Component {
           timestamp: login[1]
         });
         this.store.set("token", data.token);
+        this.store.set("user", data.user);
 
         setTimeout(() => {
           console.log("fired");

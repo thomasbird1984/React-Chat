@@ -20,13 +20,20 @@ class MessageList extends Component {
     })
   }
 
+  messageDelete(id) {
+    console.log(id);
+  }
+
   render() {
     return (
       <div className={"message-list"}>
         {this.props.messages.map((message, i) =>
           <div key={i} className={"message-bubble"}>
             <b>Message: </b>{message.text}<br/>
-            <span><b>Posted</b> {moment(message.created).format("YYYY-MM-DD HH:mm:ss")}</span>
+            <span><b>Posted</b> {moment.unix(message.created).format("YYYY-MM-DD HH:mm:ss")}</span>
+            <span onClick={() => {
+              this.messageDelete(message._id)
+            }}>Delete</span>
           </div>
         )}
       </div>

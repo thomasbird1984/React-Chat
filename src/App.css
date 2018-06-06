@@ -24,6 +24,61 @@ h5 {
   flex-direction: row;
 }
 
+.login-wrapper {
+  width: 600px;
+  background: #fff;
+  margin: 200px auto;
+  padding: 70px 50px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.login-wrapper .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.login-wrapper label {
+  font-size: .8rem;
+}
+
+.login-wrapper input {
+  color: #999;
+  outline: none;
+  margin-top: 5px;
+  font-size: 1rem;
+  padding: 10px 15px;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+}
+
+.login-wrapper input:hover {
+  color: #666;
+  border: 1px solid #bbb;
+}
+
+.login-wrapper input:focus {
+  color: #222;
+  border: 1px solid #666;
+}
+
+.login-wrapper button {
+  background: transparent;
+  border: 1px solid #333;
+  color: #333;
+  border-radius: 0;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.login-wrapper button:hover {
+  color: #fff;
+  background: #333;
+  border: 1px solid #000;
+}
+
 .content-main,
 .content-sidebar {
 

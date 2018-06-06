@@ -14,9 +14,7 @@ export default class Storage {
   }
 
   get(key) {
-    const data = localStorage.getItem(key);
-
-    if(typeof data === "object") {
+    if(key !== "token") {
       return JSON.parse(localStorage.getItem(key));
     } else {
       return localStorage.getItem(key);
