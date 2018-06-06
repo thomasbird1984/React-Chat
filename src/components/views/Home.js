@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import socketClient from "socket.io-client";
+import * as _ from "lodash";
+
 import Api from "../../services/Api";
 import Storage from "../../services/Storage";
 
@@ -37,10 +39,21 @@ class Home extends Component {
       });
     }
 
+    handleMessageDeleted(id) {
+      console.log("Parent delete", id);
+      const filtered = _.remove(this.state.messages, (chat) => {
+        return chat._id !== id;
+      });
+      this.setState({ messages: filtered });
+    }
+
     render() {
       return (
         <MessageList
           messages={this.state.messages}
+          handleMessageDeleted={(id) => {
+            this.handleMessageDeleted(id);
+          }}
         />
       );
     }

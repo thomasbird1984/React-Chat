@@ -18,6 +18,16 @@ ChatRouter.route("/create").post((req, res) => {
     res.status(201).send(message);
 });
 
+ChatRouter.route("/delete/:id").get((req, res) => {console.log("delete");
+    ChatModel.deleteOne({ _id: req.params.id }, (err) => {
+        if(err) {
+          res.json({ errors: err});
+        } else {
+          res.json({ errors: false});
+        }
+    });
+});
+
 ChatRouter.route("/:id").get((req, res) => {console.log(`MessageRouter /${req.params.id}`);
     ChatModel.findOne({ id: req.params.id }, (err, chat) => {
         res.json(chat);

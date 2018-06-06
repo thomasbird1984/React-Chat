@@ -21,7 +21,14 @@ class MessageList extends Component {
   }
 
   messageDelete(id) {
-    console.log(id);
+    this.api.get(`/messages/delete/${id}`).then((res) => {
+      console.log("Delete message response: ", res);
+
+      if(!res.errors) {
+        // todo: expose api that will send up deleted message id to be removed
+        this.props.handleMessageDeleted(id);
+      }
+    }).catch(e => console.log("Error: ", e));
   }
 
   render() {
