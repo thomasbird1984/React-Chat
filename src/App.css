@@ -190,11 +190,11 @@ h5 {
   font-size: .8rem;
 }
 
-.message-bubble:nth-child(odd) {
+.message-mine {
   align-self: flex-end;
 }
 
-.message-bubble:nth-child(even) {
+.message-other {
   align-self: flex-start;
 }
 

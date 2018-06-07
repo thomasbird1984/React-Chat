@@ -6,14 +6,16 @@ class MessageSend extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            messages: [],
-            msg: "",
-            endpoint: "http://localhost:4500"
-        };
+      this.store = new Storage();
 
-        this.store = new Storage();
-        this.socket = socketClient(this.state.endpoint);
+      this.state = {
+        messages: [],
+        msg: "",
+        endpoint: "http://localhost:4500",
+        user: this.store.get("user")
+      };
+
+      this.socket = socketClient(this.state.endpoint);
     }
 
     send() {
@@ -22,7 +24,7 @@ class MessageSend extends Component {
 
           this.socket.emit("message-sent", {
             msg: this.state.msg,
-            token: token
+            user: this.state.user
           });
           this.setState({ msg: "" });
         }

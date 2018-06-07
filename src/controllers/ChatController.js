@@ -6,10 +6,9 @@ const ChatModel = require("../models/ChatModel");
 
 class ChatController {
   addMessage(data) {
-    console.log(data);
-    const userId = Buffer.from(data.token).toString("base64").split("||")[0];
+    console.log("chat data", data);
     const message = new ChatModel({
-      userId: userId,
+      userId: data.user._id,
       text: data.msg
     });
     message.save();
