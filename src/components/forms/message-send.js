@@ -27,6 +27,7 @@ class MessageSend extends Component {
             user: this.state.user
           });
           this.setState({ msg: "" });
+          this.messageInput.focus();
         }
     }
 
@@ -41,6 +42,9 @@ class MessageSend extends Component {
                     type={"text"}
                     value={this.state.msg}
                     placeholder={"Enter message..."}
+                    ref={(messageInput) => {
+                        this.messageInput = messageInput;
+                    }}
                     onChange={(e) => {
                         this.handleChange(e);
                     }}
